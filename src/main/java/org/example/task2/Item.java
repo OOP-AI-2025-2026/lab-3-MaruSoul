@@ -1,23 +1,50 @@
 package org.example.task2;
 
 public class Item {
+    private final long id;
+    private String name;
+    private double price;
 
-    public long id;
-    public String name;
-    public double price;
+    public long getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            return;
+        }
+
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(double price) {
+        if (price < 0) {
+           return;
+        }
+
+        this.price = price;
+    }
 
     public Item(long _id, String _name, double _price) {
         this.id = _id;
-        this.name = _name;
-        this.price = _price;
+        this.setName(_name);
+        this.setPrice(_price);
     }
 
     @Override
     public String toString() {
         return "Item{" +
-                "id=" + id +
-                ", price=" + price +
-                ", name='" + name + '\'' +
+                "id=" + this.id +
+                ", price=" + this.price +
+                ", name='" + this.name + '\'' +
                 '}' + "\n";
     }
 }
